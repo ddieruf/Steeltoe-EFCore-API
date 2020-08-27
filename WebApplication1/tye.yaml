@@ -1,0 +1,30 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: webapplication1
+services:
+- name: zipkin
+  image: openzipkin/zipkin
+  bindings:
+    - port: 9411
+
+- name: mssql
+  image: mcr.microsoft.com/mssql/server
+  bindings:
+    - port: 1433
+  env:
+  - name: ACCEPT_EULA
+    value: "Y"
+  - name: SA_PASSWORD
+    value: "IheartSteeltoe1"
+
+#- name: bootadmin
+#  image: slydeveloper/spring-boot-admin
+#  bindings:
+#    - port: 1111
+#  env:
+#    - name: SPRING_BOOT_ADMIN_SECURITY_ENABLED
+#      value: false
